@@ -36,7 +36,7 @@ class SingleLinkList(object):
         # else:
         #     self._head = Node(item)
         node = Node(item)
-        node.next = self._head.next
+        node.next = self._head
         self._head = node
 
     def append(self, item):
@@ -79,9 +79,37 @@ class SingleLinkList(object):
             self.append(item)
 
 
-    # def remove(self, item):
-    #     if self.is_empty():
-    #
+    def remove(self, item):
+        try:
+            # if self.is_empty():
+            #     raise Exception
+            # else:
+            #     cur = self._head
+            #     while cur.item != item and cur.next is not None:
+            #         cur = cur.next
+            #     if cur.item == item:
+            #         prev = self._head
+            #         while prev.next != cur:
+            #             prev = prev.next
+            #         prev.next = cur.next
+            #     else:
+            #         raise Exception
+            cur = self._head
+            prev = None
+            while cur is not None:
+                if cur.item == item:
+                    if prev:
+                        prev.next = cur.next
+                    else:
+                        self._head = cur.next
+                    return True
+                else:
+                    prev = cur
+                    cur = cur.next
+            raise Exception("错误！未找到item: {}".format(item))
+        except Exception as e:
+            print("引发错误", repr(e))
+
 
 
 
@@ -93,3 +121,7 @@ if __name__ == '__main__':
     node2 = Node(2)
     single_link_list._head = node1
     node1.next = node2
+    print(node1.item)
+    print(single_link_list._head.item)
+    print(single_link_list.items())
+    # print(single_link_list._head.next)
