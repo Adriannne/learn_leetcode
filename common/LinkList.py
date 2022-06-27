@@ -116,6 +116,7 @@ class SingleLinkList(object):
 
 
 if __name__ == '__main__':
+    # test
     single_link_list = SingleLinkList()
     node1 = Node(1)
     node2 = Node(2)
